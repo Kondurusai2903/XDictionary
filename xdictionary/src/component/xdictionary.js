@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const Xdictionary = () => {
   const [input, setInput] = useState("");
-  const [w, setW] = useState("");
-  const [flag, setFlag] = useState(false);
+  const [result, setResult] = useState("");
+  const [flag, setFlag] = useState("");
   let obj1 = [
     {
       word: "React",
@@ -17,21 +17,22 @@ const Xdictionary = () => {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    for (let i of obj1) {
-      if (i.word.toLowerCase() === input.toLowerCase()) {
-        setW(i.meaning);
-        break;
+    for (let i in obj1) {
+      if (obj1[i].word.toLowerCase() === input.toLowerCase()) {
+        setResult(obj1[i].meaning);
+        return;
       }
     }
-    if (w.length === 0) {
-      setW("Word not found in the dictionary.");
+    if (input.length > 0 && result === "") {
+      setFlag("empty");
     }
-    setFlag(true);
   };
   const handlechange = (e) => {
     setInput(e.target.value);
-    setFlag(false);
+    setFlag("");
+    setResult("");
   };
+  console.log(input);
   console.log(input);
   return (
     <div>
@@ -47,7 +48,10 @@ const Xdictionary = () => {
         <button type="submit">Search</button>
       </form>
       <h3>Definition:</h3>
-      {flag ? w : ""}
+      {flag === "empty" && input.length > 0
+        ? "Word not found in the dictionary."
+        : result}
+
       {/* {flag && input.length > 0 ? "" : <p>Word not found</p>} */}
     </div>
   );
