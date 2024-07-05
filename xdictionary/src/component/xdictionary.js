@@ -48,9 +48,11 @@ const Xdictionary = () => {
         <button type="submit">Search</button>
       </form>
       <h3>Definition:</h3>
-      {flag === "empty" && input.length > 0
-        ? "Word not found in the dictionary."
-        : result}
+      <div>
+        {flag === "empty" && input.length > 0
+          ? "Word not found in the dictionary."
+          : result}
+      </div>
 
       {/* {flag && input.length > 0 ? "" : <p>Word not found</p>} */}
     </div>
