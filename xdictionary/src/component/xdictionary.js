@@ -23,7 +23,7 @@ const Xdictionary = () => {
         return;
       }
     }
-    if (input.length > 0 && result === "") {
+    if (result === "") {
       setFlag("empty");
     }
   };
@@ -42,16 +42,14 @@ const Xdictionary = () => {
           type="text"
           placeholder="search a word..."
           value={input}
-          required
+          // required
           onChange={handlechange}
         />
         <button type="submit">Search</button>
       </form>
       <h3>Definition:</h3>
       <div>
-        {flag === "empty" && input.length > 0
-          ? "Word not found in the dictionary."
-          : result}
+        {flag === "empty" ? "Word not found in the dictionary." : result}
       </div>
 
       {/* {flag && input.length > 0 ? "" : <p>Word not found</p>} */}
